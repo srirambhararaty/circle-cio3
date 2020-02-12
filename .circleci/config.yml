@@ -5,9 +5,9 @@ workflows:
   build-and-deploy:
     jobs:
       - aws-ecr/build_and_push_image:
-          account-url: '${200807487348}.dkr.ecr.us-east-2.amazonaws.com/demo1'
-          repo: '${demo1}'
-          region: '${east-2}' 
+          account-url: '${ECRURL}'
+          repo: 'demo1'
+          region: 'east-2'
           aws-access-key-id: '${accesskey}'
           aws-secret-access-key: '${awsaccesskey}'
           
