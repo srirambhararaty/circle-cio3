@@ -8,3 +8,6 @@ workflows:
           account-url: '${200807487348}.dkr.ecr.us-east-2.amazonaws.com/demo1'
           repo: '${demo1}'
           region: '${east-2}' 
+          aws-access-key-id: '${accesskey}'
+          aws-secret-access-key: '${awsaccesskey}'
+          
