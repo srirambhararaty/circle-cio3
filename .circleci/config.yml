@@ -6,9 +6,9 @@ workflows:
     jobs:
       - aws-ecr/build_and_push_image:
           context: 'sandbox creds'
-          account-url: '${ECRURL}'
+          account-url: ${ECRURL}
           repo: 'demo1'
           region: 'east-2'
-          aws-access-key-id: '${accesskey}'
-          aws-secret-access-key: '${awsaccesskey}'
+          aws-access-key-id: ${accesskey}
+          aws-secret-access-key: ${awsaccesskey}
           
