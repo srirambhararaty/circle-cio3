@@ -1,14 +1,26 @@
-version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@0.0.4
+  aws-ecr: circleci/aws-ecr@6.7.0
+version: 2.1
+
+jobs:
+  my-custom-ecr-job:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run: git clone git@github.com:ExternalReality/somedockerfile.git dockerfiles 
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          region: AWS_REGION
+          repo: testrepo
+          path: dockerfiles
+  
+
 workflows:
-  build-and-deploy:
+  ecr_workflow:
     jobs:
-      - aws-ecr/build_and_push_image:
-          context: 'sandbox creds'
-          account-url: ${ECRURL}
-          repo: 'demo1'
-          region: 'east-2'
-          aws-access-key-id: ${accesskey}
-          aws-secret-access-key: ${awsaccesskey}
-          
+      - my-custom-ecr-job:
+          context: Context
