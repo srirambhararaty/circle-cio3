@@ -6,9 +6,7 @@ jobs:
   my-custom-ecr-job:
     machine:
       image: ubuntu-1604:201903-01
-    steps:
-      - checkout
-      - run: git clone git@github.com:ExternalReality/somedockerfile.git dockerfiles 
+    steps: 
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           aws-access-key-id: AWS_ACCESS_KEY_ID
